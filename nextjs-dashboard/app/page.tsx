@@ -1,13 +1,20 @@
 import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import styles from '@/app/ui/home.module.css'
+
+import InvoiceStatus from './ui/invoices/status';
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
+      {/* 2 ways to draw the triangle logo: CSS Modules & Tailwind CSS */}
+      <div className={styles.shape} />
       <div
         className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"
       />
+
+
       <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
         {/* <AcmeLogo /> */}
       </div>
@@ -30,6 +37,17 @@ export default function Page() {
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
         </div>
+      </div>
+
+
+      <div className="flex gap-4 p-4 border rounded-lg bg-white">
+        <p className="font-bold">Trạng thái hoá đơn thử nghiệm:</p>
+
+        {/* Thử trạng thái Chờ xử lý (Pending) */}
+        <InvoiceStatus status="pending" />
+
+        {/* Thử trạng thái Đã thanh toán (Paid) */}
+        <InvoiceStatus status="paid" />
       </div>
     </main>
   );
